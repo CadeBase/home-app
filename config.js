@@ -11,4 +11,4 @@ export const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_IQTm4DcglyJmWV0MhO7qoA_g
 // someone determined and technical) — good enough for keeping the
 // app off strangers' radar, not for protecting sensitive secrets.
 // Change this to whatever you like before sharing the app link.
-export const HOUSEHOLD_PASSCODE = "changeme";
+export const HOUSEHOLD_PASSCODE = "naughtyelephants";
