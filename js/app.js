@@ -2,7 +2,7 @@ import { HOUSEHOLD_PASSCODE } from "./config.js";
 import { initTheme, toggleTheme } from "./theme.js";
 import { loadMembers } from "./members.js";
 import { renderChores, openAddChoreSheet } from "./chores.js";
-import { renderCalendar, shiftMonth, openAddEventSheet } from "./calendar.js";
+import { renderCalendar, shiftMonth, openAddEventSheet, syncGoogleCalendar } from "./calendar.js";
 import { renderMeals } from "./meals.js";
 import { renderInventory, setMode as setInventoryMode, openAddSheetForMode, mode as inventoryMode } from "./inventory.js";
 import { renderRewards } from "./rewards.js";
@@ -77,6 +77,7 @@ document.getElementById("settings-btn").addEventListener("click", () => {
 // ---- Calendar month nav ----
 document.getElementById("cal-prev").addEventListener("click", () => shiftMonth(-1));
 document.getElementById("cal-next").addEventListener("click", () => shiftMonth(1));
+document.getElementById("cal-sync-btn").addEventListener("click", syncGoogleCalendar);
 
 // ---- Inventory <-> Shopping list toggle ----
 document.getElementById("go-shopping-list").addEventListener("click", () => {

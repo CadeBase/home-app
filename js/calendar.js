@@ -83,6 +83,27 @@ export function shiftMonth(delta) {
   renderCalendar();
 }
 
+export async function syncGoogleCalendar() {
+  const btn = document.getElementById("cal-sync-btn");
+  const originalText = btn.textContent;
+  btn.textContent = "Syncing…";
+  btn.disabled = true;
+  try {
+    const res = await fetch("/api/google-calendar-sync", { method: "POST" });
+    const data = await res.json();
+    if (!res.ok) {
+      alert(data.error || "Sync failed. Is Google Calendar connected in Settings?");
+    } else {
+      await renderCalendar();
+    }
+  } catch (err) {
+    alert("Couldn't reach the sync service. Please try again.");
+  } finally {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }
+}
+
 export function openAddEventSheet() {
   openSheet(
     "New event",

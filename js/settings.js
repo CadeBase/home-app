@@ -32,7 +32,8 @@ export function openSettingsSheet(onChanged) {
       <button class="btn btn-secondary btn-block" id="add-member-btn">Add member</button>
 
       <div class="section-title">Calendar sync</div>
-      <p class="muted" style="font-size:13px;">Google Calendar isn't connected yet. When you're ready, ask to set it up and I'll walk you through it — it'll ask your permission before connecting anything.</p>
+      <a href="/api/google-auth-start" class="btn btn-secondary btn-block" style="display:block;text-align:center;text-decoration:none;box-sizing:border-box;">🔗 Connect Google Calendar</a>
+      <p class="muted" style="font-size:13px;">After connecting, use "Sync with Google Calendar" on the Calendar tab to pull in and send events.</p>
 
       <div class="section-title">Household passcode</div>
       <p class="muted" style="font-size:13px;">Change the passcode by editing js/config.js in your project files.</p>
