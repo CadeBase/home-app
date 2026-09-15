@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Home App</title>
+<meta name="theme-color" content="#FAF7F2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Passcode gate -->
+  <div id="gate" class="gate-wrap">
+    <div class="card gate-card">
+      <span class="big-emoji">🏡</span>
+      <h1>Welcome home</h1>
+      <p class="muted">Enter the household passcode to continue.</p>
+      <input id="gate-input" type="password" inputmode="numeric" placeholder="Passcode" autocomplete="off">
+      <button id="gate-submit" class="btn btn-primary btn-block">Enter</button>
+      <p id="gate-error" class="muted hidden" style="color:var(--danger)">That's not quite right — try again.</p>
+    </div>
+  </div>
+
+  <!-- Main app (hidden until unlocked) -->
+  <div id="app" class="hidden">
+    <header class="app-header">
+      <h1 id="header-title">Chores</h1>
+      <div class="row">
+        <button class="icon-btn" id="theme-toggle" title="Light / dark mode">🌙</button>
+        <button class="icon-btn" id="settings-btn" title="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- CHORES -->
+      <section id="view-chores" class="view active">
+        <div id="chores-today-list"></div>
+        <div class="section-title">Everyone's chores</div>
+        <div id="chores-all-list"></div>
+        <div class="empty-state hidden" id="chores-empty">
+          <span class="big-emoji">🧺</span>
+          No chores yet. Tap + to add the first one.
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section id="view-calendar" class="view">
+        <div class="row between" style="margin-bottom:10px;">
+          <button class="icon-btn" id="cal-prev">‹</button>
+          <h2 id="cal-month-label" class="display"></h2>
+          <button class="icon-btn" id="cal-next">›</button>
+        </div>
+        <div id="cal-events-list"></div>
+        <div class="empty-state hidden" id="cal-empty">
+          <span class="big-emoji">📅</span>
+          No events yet. Tap + to add one, or connect Google Calendar in Settings.
+        </div>
+      </section>
+
+      <!-- MEALS -->
+      <section id="view-meals" class="view">
+        <div id="meals-list"></div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section id="view-inventory" class="view">
+        <div class="row between" style="margin-bottom: 4px;">
+          <div class="section-title" style="margin:0;">Household inventory</div>
+          <button class="btn btn-secondary" id="go-shopping-list" style="padding:8px 12px;font-size:13px;">🛒 Shopping list</button>
+        </div>
+        <div id="inventory-list"></div>
+        <div class="empty-state hidden" id="inventory-empty">
+          <span class="big-emoji">📦</span>
+          Nothing tracked yet. Tap + to add an item.
+        </div>
+      </section>
+
+      <!-- REWARDS -->
+      <section id="view-rewards" class="view">
+        <div id="rewards-list"></div>
+      </section>
+    </main>
+
+    <nav class="tab-bar">
+      <button class="tab-btn active" data-view="chores"><span class="tab-icon">✅</span>Chores</button>
+      <button class="tab-btn" data-view="calendar"><span class="tab-icon">📅</span>Calendar</button>
+      <button class="tab-btn" data-view="meals"><span class="tab-icon">🍽️</span>Meals</button>
+      <button class="tab-btn" data-view="inventory"><span class="tab-icon">📦</span>Inventory</button>
+      <button class="tab-btn" data-view="rewards"><span class="tab-icon">⭐</span>Rewards</button>
+    </nav>
+
+    <button class="fab" id="fab-add">+</button>
+  </div>
+
+  <!-- Generic bottom sheet (form content injected by JS) -->
+  <div class="sheet-backdrop" id="sheet-backdrop">
+    <div class="sheet" id="sheet">
+      <div class="sheet-header">
+        <h2 id="sheet-title" class="display"></h2>
+        <button class="icon-btn" id="sheet-close">✕</button>
+      </div>
+      <div id="sheet-body"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
